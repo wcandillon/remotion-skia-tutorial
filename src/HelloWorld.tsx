@@ -9,11 +9,12 @@ import {
   Drawing,
   Skia,
   ColorMatrix,
+  Mask,
 } from "@shopify/react-native-skia";
 
 import { RemotionCanvas } from "./components";
 import { CANVAS } from "./components/Theme";
-import { PhosphorDot } from "./CRT/PhosphorDot";
+import { PhosphorDot, TILE } from "./CRT/PhosphorDot";
 import { Reference } from "./CRT/Reference";
 import { Tile } from "./CRT/Tile";
 
@@ -50,14 +51,45 @@ export const HelloWorld = () => {
       width={width}
       height={height}
     >
+      <Fill color="black" />
       <Group>
-        <ColorMatrix matrix={filterColor(0, 1, 0)} />
-        <Reference />
+        <Mask
+          mask={
+            <Tile rect={TILE}>
+              <PhosphorDot channel="r" />
+            </Tile>
+          }
+        >
+          <Group>
+            <ColorMatrix matrix={filterColor(1, 0, 0)} />
+            <Reference />
+          </Group>
+        </Mask>
+        <Mask
+          mask={
+            <Tile rect={TILE}>
+              <PhosphorDot channel="g" />
+            </Tile>
+          }
+        >
+          <Group>
+            <ColorMatrix matrix={filterColor(0, 1, 0)} />
+            <Reference />
+          </Group>
+        </Mask>
+        <Mask
+          mask={
+            <Tile rect={TILE}>
+              <PhosphorDot channel="b" />
+            </Tile>
+          }
+        >
+          <Group>
+            <ColorMatrix matrix={filterColor(0, 0, 1)} />
+            <Reference />
+          </Group>
+        </Mask>
       </Group>
-
-      {/* <Tile rect={rect(0, 0, 30, 23)}>
-        <PhosphorDot />
-      </Tile> */}
     </RemotionCanvas>
   );
 };

@@ -28,7 +28,7 @@ const { height, width } = CANVAS;
 const fontSize = 800;
 const PADDING = 400;
 
-const leftColors = [
+const baseColors = [
   "green",
   "yellow",
   "red",
@@ -37,8 +37,7 @@ const leftColors = [
   "cyan",
   "green",
 ];
-const rightColors = leftColors;
-
+const colors = [...baseColors, ...baseColors];
 export const Reference = () => {
   const duration = 30 * 3;
   const progress = useLoop(duration, false);
@@ -71,14 +70,14 @@ export const Reference = () => {
           <LinearGradient
             start={vec(0, 0)}
             end={vec(width, 0)}
-            colors={leftColors}
+            colors={colors}
           />
         </Rect>
         <Rect rect={rightBand}>
           <LinearGradient
             start={vec(width, 0)}
             end={vec(2 * width, 0)}
-            colors={rightColors}
+            colors={colors}
           />
         </Rect>
       </Group>

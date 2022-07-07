@@ -27,7 +27,7 @@ import { useLoop } from "../components/animations/useLoop";
 const { height, width } = CANVAS;
 const fontSize = 800;
 const PADDING = 400;
-
+const y = fontSize + 300 + 200;
 const baseColors = [
   "green",
   "yellow",
@@ -46,9 +46,15 @@ export const Reference = () => {
   const w = font
     .getGlyphWidths(font.getGlyphIDs("CRT"))
     .reduce((a, b) => a + b);
-  const leftBand = rect(0, fontSize + 300 + 200, width, 400);
-  const rightBand = rect(width, fontSize + 300 + 200, width, 400);
+  const leftBand = rect(0, y, width, PADDING);
+  const rightBand = rect(width, y, width, PADDING);
   const translateX = interpolate(progress, [0, 1], [0, -width]);
+  const clip = rect(
+    PADDING,
+    fontSize + 300 + 200,
+    width - PADDING * 2,
+    PADDING
+  );
   return (
     <>
       <Fill>
@@ -65,21 +71,23 @@ export const Reference = () => {
         font={font}
         color="white"
       />
-      <Group transform={[{ translateX }]}>
-        <Rect rect={leftBand}>
-          <LinearGradient
-            start={vec(0, 0)}
-            end={vec(width, 0)}
-            colors={colors}
-          />
-        </Rect>
-        <Rect rect={rightBand}>
-          <LinearGradient
-            start={vec(width, 0)}
-            end={vec(2 * width, 0)}
-            colors={colors}
-          />
-        </Rect>
+      <Group clip={clip}>
+        <Group transform={[{ translateX }]}>
+          <Rect rect={leftBand}>
+            <LinearGradient
+              start={vec(0, 0)}
+              end={vec(width, 0)}
+              colors={colors}
+            />
+          </Rect>
+          <Rect rect={rightBand}>
+            <LinearGradient
+              start={vec(width, 0)}
+              end={vec(2 * width, 0)}
+              colors={colors}
+            />
+          </Rect>
+        </Group>
       </Group>
     </>
   );

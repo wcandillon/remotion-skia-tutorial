@@ -1,4 +1,10 @@
-import { rect, Rect, RoundedRect } from "@shopify/react-native-skia";
+import {
+  Blur,
+  Group,
+  rect,
+  Rect,
+  RoundedRect,
+} from "@shopify/react-native-skia";
 import React from "react";
 import { View } from "react-native";
 
@@ -20,7 +26,7 @@ interface PhosphorDotProps {
 export const PhosphorDot = ({ channel }: PhosphorDotProps) => {
   const r = 6;
   return (
-    <>
+    <Group>
       {/* <Rect x={0} y={0} width={30} height={23} color="black" /> */}
       {isRed(channel) && (
         <RoundedRect
@@ -52,7 +58,7 @@ export const PhosphorDot = ({ channel }: PhosphorDotProps) => {
           r={r}
         />
       )}
-    </>
+    </Group>
   );
 };
 

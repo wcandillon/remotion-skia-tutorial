@@ -11,7 +11,7 @@ export const useLoop = (
   // Number of frames in the current iteration
   const progress = interpolate(
     frame % durationInFrames,
-    [0, durationInFrames],
+    [0, durationInFrames - 1],
     [0, 1],
     {
       ...CLAMP,

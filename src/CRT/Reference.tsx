@@ -12,7 +12,13 @@ import {
   vec,
 } from "@shopify/react-native-skia";
 import { useEffect, useState } from "react";
-import { continueRender, delayRender, useCurrentFrame } from "remotion";
+import {
+  continueRender,
+  delayRender,
+  interpolate,
+  useCurrentFrame,
+} from "remotion";
+import { Easing } from "react-native";
 
 import { useTypefaces } from "../components";
 import { CANVAS } from "../components/Theme";
@@ -22,7 +28,16 @@ const { height, width } = CANVAS;
 const fontSize = 800;
 const PADDING = 400;
 
-const colors = ["green", "yellow", "red", "purple", "blue", "cyan"];
+const leftColors = [
+  "green",
+  "yellow",
+  "red",
+  "purple",
+  "blue",
+  "cyan",
+  "green",
+];
+const rightColors = leftColors;
 
 export const Reference = () => {
   const duration = 30 * 3;
@@ -32,11 +47,9 @@ export const Reference = () => {
   const w = font
     .getGlyphWidths(font.getGlyphIDs("CRT"))
     .reduce((a, b) => a + b);
-  const band = rect(0, fontSize + 300 + 200, width, 400);
-  console.log({
-    progress,
-    translateX: mix(progress, 0, -width),
-  });
+  const leftBand = rect(0, fontSize + 300 + 200, width, 400);
+  const rightBand = rect(width, fontSize + 300 + 200, width, 400);
+  const translateX = interpolate(progress, [0, 1], [0, -width]);
   return (
     <>
       <Fill>
@@ -53,12 +66,19 @@ export const Reference = () => {
         font={font}
         color="white"
       />
-      <Group>
-        <Rect rect={band}>
+      <Group transform={[{ translateX }]}>
+        <Rect rect={leftBand}>
           <LinearGradient
-            start={vec(mix(progress, -width, -2 * width), 0)}
-            end={vec(mix(progress, 2 * width, width), 0)}
-            colors={[...colors, ...colors, ...colors]}
+            start={vec(0, 0)}
+            end={vec(width, 0)}
+            colors={leftColors}
+          />
+        </Rect>
+        <Rect rect={rightBand}>
+          <LinearGradient
+            start={vec(width, 0)}
+            end={vec(2 * width, 0)}
+            colors={rightColors}
           />
         </Rect>
       </Group>

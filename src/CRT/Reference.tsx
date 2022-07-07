@@ -1,6 +1,8 @@
 import {
   Fill,
+  Group,
   LinearGradient,
+  mix,
   mixColors,
   rect,
   Rect,
@@ -27,14 +29,18 @@ const times = <T,>(input: T[], n: number) =>
     .flat();
 
 export const Reference = () => {
-  const frame = useCurrentFrame();
   const duration = 30 * 3;
+  const progress = useLoop(duration, false);
   const typeface = useTypefaces()[0];
   const font = Skia.Font(typeface, fontSize);
   const w = font
     .getGlyphWidths(font.getGlyphIDs("CRT"))
     .reduce((a, b) => a + b);
-  const band = rect(PADDING, fontSize + 300 + 200, width - PADDING * 2, 400);
+  const band = rect(0, fontSize + 300 + 200, width * 2, 400);
+  console.log({
+    progress,
+    translateX: mix(progress, 0, -width),
+  });
   return (
     <>
       <Fill>
@@ -51,16 +57,23 @@ export const Reference = () => {
         font={font}
         color="white"
       />
-      <Rect rect={band}>
-        <LinearGradient
-          start={vec(band.x, 0)}
-          end={vec(band.x + band.width * 2, 0)}
-          colors={times(
-            ["green", "yellow", "red", "purple", "blue", "cyan"],
-            2
-          )}
-        />
-      </Rect>
+      <Group transform={[{ translateX: mix(progress, 0, -width) }]}>
+        <Rect rect={band}>
+          <LinearGradient
+            start={vec(0, 0)}
+            end={vec(width * 2, 0)}
+            colors={[
+              "green",
+              "yellow",
+              "red",
+              "purple",
+              "blue",
+              "cyan",
+              ...["green", "yellow", "red", "purple", "blue", "cyan"],
+            ]}
+          />
+        </Rect>
+      </Group>
     </>
   );
 };

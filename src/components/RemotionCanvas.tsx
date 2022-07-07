@@ -92,7 +92,7 @@ export const RemotionCanvas = ({
     return null;
   }
   return (
-    <Canvas style={{ width, height }}>
+    <Canvas style={{ width, height }} mode="continuous">
       <Internals.RemotionContextProvider contexts={contexts}>
         <AssetManagerContext.Provider value={assetMgr}>
           {children}

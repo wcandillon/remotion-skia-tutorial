@@ -22,11 +22,7 @@ const { height, width } = CANVAS;
 const fontSize = 800;
 const PADDING = 400;
 
-const times = <T,>(input: T[], n: number) =>
-  new Array(n)
-    .fill(0)
-    .map(() => input)
-    .flat();
+const colors = ["green", "yellow", "red", "purple", "blue", "cyan"];
 
 export const Reference = () => {
   const duration = 30 * 3;
@@ -36,7 +32,7 @@ export const Reference = () => {
   const w = font
     .getGlyphWidths(font.getGlyphIDs("CRT"))
     .reduce((a, b) => a + b);
-  const band = rect(0, fontSize + 300 + 200, width * 2, 400);
+  const band = rect(0, fontSize + 300 + 200, width, 400);
   console.log({
     progress,
     translateX: mix(progress, 0, -width),
@@ -57,20 +53,12 @@ export const Reference = () => {
         font={font}
         color="white"
       />
-      <Group transform={[{ translateX: mix(progress, 0, -width) }]}>
+      <Group>
         <Rect rect={band}>
           <LinearGradient
-            start={vec(0, 0)}
-            end={vec(width * 2, 0)}
-            colors={[
-              "green",
-              "yellow",
-              "red",
-              "purple",
-              "blue",
-              "cyan",
-              ...["green", "yellow", "red", "purple", "blue", "cyan"],
-            ]}
+            start={vec(mix(progress, -width, -2 * width), 0)}
+            end={vec(mix(progress, 2 * width, width), 0)}
+            colors={[...colors, ...colors, ...colors]}
           />
         </Rect>
       </Group>

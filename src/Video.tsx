@@ -1,8 +1,6 @@
-import { LoadSkia } from "@shopify/react-native-skia/src/web";
-import { useState, useEffect } from "react";
-import { Composition, continueRender, delayRender } from "remotion";
+import { Composition } from "remotion";
 
-import { HelloWorld } from "./HelloWorld";
+import { CRT } from "./CRT";
 import { CANVAS } from "./components/Theme";
 
 const { width, height } = CANVAS;
@@ -11,8 +9,8 @@ export const RemotionVideo = () => {
   return (
     <>
       <Composition
-        id="HelloWorld"
-        component={HelloWorld}
+        id="CRT"
+        component={CRT}
         durationInFrames={300}
         fps={30}
         width={width}

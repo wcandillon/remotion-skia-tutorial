@@ -1,3 +1,4 @@
+import { SkiaCanvas } from "@remotion/skia";
 import type { SkImage, SkTypeface } from "@shopify/react-native-skia";
 import { Canvas, Skia } from "@shopify/react-native-skia";
 import type { ReactNode } from "react";
@@ -92,12 +93,10 @@ export const RemotionCanvas = ({
     return null;
   }
   return (
-    <Canvas style={{ width, height }} mode="continuous">
-      <Internals.RemotionContextProvider contexts={contexts}>
-        <AssetManagerContext.Provider value={assetMgr}>
-          {children}
-        </AssetManagerContext.Provider>
-      </Internals.RemotionContextProvider>
-    </Canvas>
+    <SkiaCanvas width={width} height={height} mode="continuous">
+      <AssetManagerContext.Provider value={assetMgr}>
+        {children}
+      </AssetManagerContext.Provider>
+    </SkiaCanvas>
   );
 };

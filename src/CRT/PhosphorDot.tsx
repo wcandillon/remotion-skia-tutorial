@@ -27,7 +27,6 @@ export const PhosphorDot = ({ channel }: PhosphorDotProps) => {
   const r = 6;
   return (
     <Group>
-      {/* <Rect x={0} y={0} width={30} height={23} color="black" /> */}
       {isRed(channel) && (
         <RoundedRect
           x={0}

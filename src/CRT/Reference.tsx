@@ -38,7 +38,12 @@ const baseColors = [
   "green",
 ];
 const colors = [...baseColors, ...baseColors];
-export const Reference = () => {
+
+interface ReferenceProps {
+  progress: number;
+}
+
+export const Reference = ({ progress: refresh }: ReferenceProps) => {
   const duration = 30 * 3;
   const progress = useLoop(duration, false);
   const typeface = useTypefaces()[0];
@@ -56,7 +61,7 @@ export const Reference = () => {
     PADDING
   );
   return (
-    <>
+    <Group>
       <Fill>
         <LinearGradient
           colors={["black", "white"]}
@@ -89,6 +94,6 @@ export const Reference = () => {
           </Rect>
         </Group>
       </Group>
-    </>
+    </Group>
   );
 };

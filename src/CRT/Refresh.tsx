@@ -47,7 +47,6 @@ const onDraw = createDrawing<RefreshProps>(
       shaderPaint.setImageFilter(
         Skia.ImageFilter.MakeBlur(3, 3, TileMode.Decal, null)
       );
-      console.log({ progress, revert });
       shaderPaint.setShader(
         displacementShader.makeShaderWithChildren(
           [mix(progress, 0, height), revert],

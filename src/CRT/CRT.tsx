@@ -28,11 +28,7 @@ interface CRTProps {
 
 const CRTEffect = ({ children, revert, progress }: CRTProps) => {
   return (
-    <RemotionCanvas
-      typefaces={[require("./assets/PublicPixel.ttf")]}
-      width={width}
-      height={height}
-    >
+    <RemotionCanvas typefaces={[require("./assets/PublicPixel.ttf")]}>
       <Refresh revert={revert} progress={progress}>
         <Fill color="black" />
         <Adjustments>
@@ -88,7 +84,7 @@ export const CRT = () => {
   const revert = iteration % 2;
   return (
     <CRTEffect progress={progress} revert={revert}>
-      <Reference progress={progress} />
+      <Reference />
     </CRTEffect>
   );
 };

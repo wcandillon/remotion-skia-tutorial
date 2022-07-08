@@ -2,23 +2,13 @@ import {
   Fill,
   Group,
   LinearGradient,
-  mix,
-  mixColors,
   rect,
   Rect,
   Skia,
   Text,
-  useFont,
   vec,
 } from "@shopify/react-native-skia";
-import { useEffect, useState } from "react";
-import {
-  continueRender,
-  delayRender,
-  interpolate,
-  useCurrentFrame,
-} from "remotion";
-import { Easing } from "react-native";
+import { interpolate } from "remotion";
 
 import { useTypefaces } from "../components";
 import { CANVAS } from "../components/Theme";
@@ -39,11 +29,7 @@ const baseColors = [
 ];
 const colors = [...baseColors, ...baseColors];
 
-interface ReferenceProps {
-  progress: number;
-}
-
-export const Reference = ({ progress: refresh }: ReferenceProps) => {
+export const Reference = () => {
   const duration = 30 * 3;
   const progress = useLoop(duration, false);
   const typeface = useTypefaces()[0];

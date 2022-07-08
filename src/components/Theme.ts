@@ -1,11 +1,7 @@
-import { vec } from "@shopify/react-native-skia";
+import { vec, rect } from "@shopify/react-native-skia";
 
 const width = 3840;
 const height = 2160;
-const center = vec(width / 2, height / 2);
+export const center = vec(width / 2, height / 2);
 
-export const CANVAS = {
-  width,
-  height,
-  center,
-};
+export const CANVAS = rect(0, 0, width, height);

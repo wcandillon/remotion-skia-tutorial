@@ -4,7 +4,11 @@ import type { ReactNode } from "react";
 import { useContext, createContext, useState, useEffect } from "react";
 import { Internals } from "remotion";
 
+import { CANVAS } from "./Theme";
+
 type Images = Record<string, SkImage>;
+
+const { width, height } = CANVAS;
 
 interface AssetManagerContext {
   images: Images;
@@ -16,8 +20,6 @@ interface RemotionCanvasProps {
   images?: ReturnType<typeof require>[];
   typefaces?: string[];
   children: ReactNode | ReactNode[];
-  width: number;
-  height: number;
 }
 
 const useAssetManager = () => {
@@ -54,8 +56,6 @@ export const RemotionCanvas = ({
   children,
   images: assets,
   typefaces,
-  width,
-  height,
 }: RemotionCanvasProps) => {
   const contexts = Internals.useRemotionContexts();
   const [assetMgr, setAssetMgr] = useState<AssetManagerContext | null>(null);

@@ -1,7 +1,7 @@
 import { Config } from "remotion";
 import CopyPlugin from "copy-webpack-plugin";
 
-Config.Rendering.setImageFormat("jpeg");
+Config.Rendering.setImageFormat("png");
 Config.Output.setOverwriteOutput(true);
 
 Config.Bundling.overrideWebpackConfig((currentConfiguration) => {

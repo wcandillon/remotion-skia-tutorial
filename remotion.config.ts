@@ -5,17 +5,16 @@ Config.Rendering.setImageFormat("png");
 Config.Output.setOverwriteOutput(true);
 
 Config.Bundling.overrideWebpackConfig((currentConfiguration) => {
-  currentConfiguration.plugins!.push(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    new CopyPlugin({
-      patterns: [
-        { from: "node_modules/canvaskit-wasm/bin/full/canvaskit.wasm" },
-      ],
-    })
-  );
   return {
     ...currentConfiguration,
+    plugins: [
+      ...(currentConfiguration.plugins ?? []),
+      new CopyPlugin({
+        patterns: [
+          { from: "node_modules/canvaskit-wasm/bin/full/canvaskit.wasm" },
+        ],
+      }),
+    ],
     resolve: {
       ...currentConfiguration.resolve,
       // FIXME: To fix missing modules in browser when using webassembly
@@ -34,6 +33,7 @@ Config.Bundling.overrideWebpackConfig((currentConfiguration) => {
       ],
     },
     externals: {
+      ...((currentConfiguration.externals as Record<string, string>) ?? {}),
       "react-native-reanimated": "require('react-native-reanimated')",
       "react-native-reanimated/lib/reanimated2/core":
         "require('react-native-reanimated/lib/reanimated2/core')",

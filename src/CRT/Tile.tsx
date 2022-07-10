@@ -8,6 +8,7 @@ import {
 import type { ReactNode } from "react";
 
 import { TILE } from "./PhosphorDot";
+import { ShaderFilter } from "./ShaderFilter";
 
 const displacementShader = Skia.RuntimeEffect.Make(`
 uniform shader image;
@@ -29,37 +30,14 @@ interface TileProps {
   children?: ReactNode | ReactNode[];
 }
 
-const onDraw = createDrawing<TileProps>((ctx, { rect: boundingRect }, node) => {
-  if (node.memoized === null) {
-    const recorder = Skia.PictureRecorder();
-    const canvas = recorder.beginRecording(boundingRect);
-    node.visit({
-      ...ctx,
-      canvas,
-    });
-    const pic = recorder.finishRecordingAsPicture();
-    const shaderPaint = Skia.Paint();
-    shaderPaint.setShader(
-      displacementShader.makeShaderWithChildren(
-        [],
-        [pic.makeShader(TileMode.Repeat, TileMode.Repeat, FilterMode.Nearest)]
-      )
-    );
-    node.memoized = shaderPaint;
-  }
-  ctx.canvas.drawPaint(node.memoized as SkPaint);
-});
-
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace JSX {
-    interface IntrinsicElements {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      skDrawing: DrawingProps<any>;
-    }
-  }
-}
-
-export const Tile = (props: TileProps) => {
-  return <skDrawing onDraw={onDraw} skipProcessing {...props} />;
+export const Tile = ({ rect, children }: TileProps) => {
+  return (
+    <ShaderFilter
+      rect={rect}
+      tileMode={TileMode.Repeat}
+      shader={displacementShader}
+    >
+      {children}
+    </ShaderFilter>
+  );
 };

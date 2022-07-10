@@ -18,7 +18,7 @@ import { Reference } from "./Reference";
 import { Refresh } from "./Refresh";
 import { Adjustments } from "./Adjustments";
 
-const { width, height, center } = CANVAS;
+const { width, height } = CANVAS;
 
 interface CRTProps {
   children: ReactNode | ReactNode[];

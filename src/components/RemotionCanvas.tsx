@@ -1,4 +1,11 @@
-import type { SkData, SkImage, SkTypeface, Canvas, Skia } from "@shopify/react-native-skia";
+import { SkiaCanvas } from "@remotion/skia";
+import {
+  SkData,
+  SkImage,
+  SkTypeface,
+  Canvas,
+  Skia,
+} from "@shopify/react-native-skia";
 import type { ReactNode } from "react";
 import { useContext, createContext, useState, useEffect } from "react";
 import { Internals } from "remotion";

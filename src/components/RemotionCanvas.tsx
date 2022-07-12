@@ -1,5 +1,11 @@
-import type { SkData, SkImage, SkTypeface } from "@shopify/react-native-skia";
-import { Canvas, Skia } from "@shopify/react-native-skia";
+import { SkiaCanvas } from "@remotion/skia";
+import {
+  SkData,
+  SkImage,
+  SkTypeface,
+  Canvas,
+  Skia,
+} from "@shopify/react-native-skia";
 import type { ReactNode } from "react";
 import { useContext, createContext, useState, useEffect } from "react";
 import { Internals } from "remotion";
@@ -98,13 +104,11 @@ export const RemotionCanvas = ({
     return null;
   }
   return (
-    <Canvas style={{ width, height }} mode="continuous">
-      <Internals.RemotionContextProvider contexts={contexts}>
-        <AssetManagerContext.Provider value={assetMgr}>
-          {children}
-        </AssetManagerContext.Provider>
-      </Internals.RemotionContextProvider>
-    </Canvas>
+    <SkiaCanvas width={width} height={height} mode="continuous">
+      <AssetManagerContext.Provider value={assetMgr}>
+        {children}
+      </AssetManagerContext.Provider>
+    </SkiaCanvas>
   );
 };
 

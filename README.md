@@ -1,5 +1,7 @@
 # Remotion video
 
+**YouTube Tutorial:** https://www.youtube.com/watch?v=-7MOoWN2_nk
+
 <p align="center">
   <a href="https://github.com/remotion-dev/logo">
     <img src="https://github.com/remotion-dev/logo/raw/main/withtitle/element-0.png">

@@ -7,12 +7,14 @@ import {
   Skia,
   Text,
   vec,
+  Image,
 } from "@shopify/react-native-skia";
 import { interpolate } from "remotion";
 
 import { useTypefaces } from "../components";
 import { CANVAS } from "../components/Theme";
 import { useLoop } from "../components/animations/useLoop";
+import { useImages } from "../components/RemotionCanvas";
 
 const { height, width } = CANVAS;
 const fontSize = 800;
@@ -32,7 +34,7 @@ const colors = [...baseColors, ...baseColors];
 export const Reference = () => {
   const duration = 30 * 3;
   const progress = useLoop(duration, false);
-  const typeface = useTypefaces()[0];
+  const typeface = useTypefaces().PublicPixel;
   const font = Skia.Font(typeface, fontSize);
   const w = font
     .getGlyphWidths(font.getGlyphIDs("CRT"))

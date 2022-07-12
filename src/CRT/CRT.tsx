@@ -28,7 +28,10 @@ interface CRTProps {
 
 const CRTEffect = ({ children, revert, progress }: CRTProps) => {
   return (
-    <RemotionCanvas typefaces={[require("./assets/PublicPixel.ttf")]}>
+    <RemotionCanvas
+      typefaces={{ PublicPixel: require("./assets/PublicPixel.ttf") }}
+      images={{ Skia: require("./assets/skia.png") }}
+    >
       <Refresh revert={revert} progress={progress}>
         <Fill color="black" />
         <Adjustments>

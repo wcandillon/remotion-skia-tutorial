@@ -1,25 +1,27 @@
-import { SkiaCanvas } from "@remotion/skia";
-import type { SkImage, SkTypeface } from "@shopify/react-native-skia";
-import { Canvas, Skia } from "@shopify/react-native-skia";
+import type { SkData, SkImage, SkTypeface, Canvas, Skia } from "@shopify/react-native-skia";
 import type { ReactNode } from "react";
 import { useContext, createContext, useState, useEffect } from "react";
 import { Internals } from "remotion";
 
 import { CANVAS } from "./Theme";
 
+type ImagesToLoad = Record<string, ReturnType<typeof require>>;
+type TypefacesToLoad = Record<string, ReturnType<typeof require>>;
 type Images = Record<string, SkImage>;
+type TypeFaces = Record<string, SkTypeface>;
 
 const { width, height } = CANVAS;
 
 interface AssetManagerContext {
   images: Images;
-  typefaces: SkTypeface[];
+  typefaces: TypeFaces;
 }
+
 const AssetManagerContext = createContext<AssetManagerContext | null>(null);
 
 interface RemotionCanvasProps {
-  images?: ReturnType<typeof require>[];
-  typefaces?: string[];
+  images: ImagesToLoad;
+  typefaces: TypefacesToLoad;
   children: ReactNode | ReactNode[];
 }
 
@@ -41,54 +43,56 @@ export const useImages = () => {
   return assetManager.images;
 };
 
-const resolveAsset = async (
-  type: "font" | "image" | "typeface",
-  asset: ReturnType<typeof require>
+const resolveAsset = async <T,>(
+  type: "image" | "typeface",
+  name: string,
+  asset: ReturnType<typeof require>,
+  factory: (data: SkData) => T
 ) => {
   const data = await Skia.Data.fromURI(asset);
   return {
     type,
-    asset,
-    data,
+    name,
+    data: factory(data),
   };
 };
 
 export const RemotionCanvas = ({
   children,
-  images: assets,
-  typefaces,
+  images: imagesToLoad,
+  typefaces: typefacesToLoad,
 }: RemotionCanvasProps) => {
   const contexts = Internals.useRemotionContexts();
   const [assetMgr, setAssetMgr] = useState<AssetManagerContext | null>(null);
   useEffect(() => {
     (async () => {
-      const data = await Promise.all([
-        ...(assets ?? []).map((asset) => resolveAsset("image", asset)),
-        ...(typefaces ?? []).map((asset) => resolveAsset("typeface", asset)),
+      const assets = await Promise.all([
+        ...Object.keys(imagesToLoad).map((name) =>
+          resolveAsset("image", name, imagesToLoad[name], (data: SkData) =>
+            Skia.Image.MakeImageFromEncoded(data)
+          )
+        ),
+        ...Object.keys(typefacesToLoad).map((name) =>
+          resolveAsset(
+            "typeface",
+            name,
+            typefacesToLoad[name],
+            (data: SkData) => Skia.Typeface.MakeFreeTypeFaceFromData(data)
+          )
+        ),
       ]);
-      const tf = data
-        .filter(({ type }) => type === "typeface")
-        .map((a) => {
-          const result = Skia.Typeface.MakeFreeTypeFaceFromData(a.data);
-          if (!result) {
-            console.log({ a });
-            throw new Error("Could not create typeface");
-          }
-          return result;
-        });
-      const images = data
-        .filter(({ type }) => type === "image")
-        .reduce((acc, image, index) => {
-          const result = Skia.Image.MakeImageFromEncoded(image.data);
-          if (!result) {
-            throw new Error("Could not load image");
-          }
-          acc[(assets ?? [])[index]] = result;
-          return acc;
-        }, {} as Images);
-      setAssetMgr({ images, typefaces: tf });
+      const images: Images = {};
+      const typefaces: TypeFaces = {};
+      assets.forEach((asset) => {
+        if (asset.type === "image") {
+          images[asset.name] = asset.data as SkImage;
+        } else {
+          typefaces[asset.name] = asset.data as SkTypeface;
+        }
+      });
+      setAssetMgr({ images, typefaces });
     })();
-  }, [assets, typefaces]);
+  }, [imagesToLoad, typefacesToLoad]);
   if (assetMgr === null) {
     return null;
   }
@@ -99,4 +103,9 @@ export const RemotionCanvas = ({
       </AssetManagerContext.Provider>
     </SkiaCanvas>
   );
+};
+
+RemotionCanvas.defaultProps = {
+  images: {},
+  typefaces: {},
 };

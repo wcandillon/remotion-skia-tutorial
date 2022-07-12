@@ -8,11 +8,14 @@ import {
   createDrawing,
 } from "@shopify/react-native-skia";
 import type { ReactNode } from "react";
+import { Children } from "react";
 
 import { CANVAS } from "../components/Theme";
 
+import { ShaderFilter } from "./ShaderFilter";
+
 // https://www.shadertoy.com/view/XdcXzn
-const displacementShader = Skia.RuntimeEffect.Make(`
+const adjustmentShader = Skia.RuntimeEffect.Make(`
 uniform shader image;
 
 mat4 brightnessMatrix( float brightness )
@@ -74,37 +77,10 @@ interface AdjustmentsProps {
   children?: ReactNode | ReactNode[];
 }
 
-const onDraw = createDrawing<AdjustmentsProps>((ctx, _, node) => {
-  if (node.memoized === null) {
-    const recorder = Skia.PictureRecorder();
-    const canvas = recorder.beginRecording(boundingRect);
-    node.visit({
-      ...ctx,
-      canvas,
-    });
-    const pic = recorder.finishRecordingAsPicture();
-    const shaderPaint = Skia.Paint();
-    shaderPaint.setShader(
-      displacementShader.makeShaderWithChildren(
-        [],
-        [pic.makeShader(TileMode.Repeat, TileMode.Repeat, FilterMode.Nearest)]
-      )
-    );
-    node.memoized = shaderPaint;
-  }
-  ctx.canvas.drawPaint(node.memoized as SkPaint);
-});
-
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace JSX {
-    interface IntrinsicElements {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      skDrawing: DrawingProps<any>;
-    }
-  }
-}
-
-export const Adjustments = (props: AdjustmentsProps) => {
-  return <skDrawing onDraw={onDraw} skipProcessing {...props} />;
+export const Adjustments = ({ children }: AdjustmentsProps) => {
+  return (
+    <ShaderFilter shader={adjustmentShader} rect={CANVAS}>
+      {children}
+    </ShaderFilter>
+  );
 };

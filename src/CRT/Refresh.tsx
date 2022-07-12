@@ -1,13 +1,4 @@
-import type { DrawingProps, SkPaint } from "@shopify/react-native-skia";
-import {
-  mix,
-  rect,
-  SkRect,
-  FilterMode,
-  TileMode,
-  Skia,
-  createDrawing,
-} from "@shopify/react-native-skia";
+import { mix, Skia } from "@shopify/react-native-skia";
 import type { ReactNode } from "react";
 
 import { CANVAS } from "../components/Theme";

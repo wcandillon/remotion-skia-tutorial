@@ -1,10 +1,5 @@
-import type { DrawingProps, SkPaint, SkRect } from "@shopify/react-native-skia";
-import {
-  FilterMode,
-  TileMode,
-  Skia,
-  createDrawing,
-} from "@shopify/react-native-skia";
+import type { SkRect } from "@shopify/react-native-skia";
+import { TileMode, Skia } from "@shopify/react-native-skia";
 import type { ReactNode } from "react";
 
 import { TILE } from "./PhosphorDot";

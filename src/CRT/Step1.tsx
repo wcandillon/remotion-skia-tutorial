@@ -5,8 +5,6 @@ import {
   Group,
   Mask,
 } from "@shopify/react-native-skia";
-import React from "react";
-import { View } from "react-native";
 
 import { CANVAS, RemotionCanvas } from "../components";
 

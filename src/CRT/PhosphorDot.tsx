@@ -1,12 +1,4 @@
-import {
-  Blur,
-  Group,
-  rect,
-  Rect,
-  RoundedRect,
-} from "@shopify/react-native-skia";
-import React from "react";
-import { View } from "react-native";
+import { Group, rect, RoundedRect } from "@shopify/react-native-skia";
 
 type Channel = "r" | "g" | "b" | "rgb";
 

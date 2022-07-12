@@ -1,14 +1,5 @@
-import type { DrawingProps, SkPaint } from "@shopify/react-native-skia";
-import {
-  rect,
-  SkRect,
-  FilterMode,
-  TileMode,
-  Skia,
-  createDrawing,
-} from "@shopify/react-native-skia";
+import { Skia } from "@shopify/react-native-skia";
 import type { ReactNode } from "react";
-import { Children } from "react";
 
 import { CANVAS } from "../components/Theme";
 
@@ -69,9 +60,6 @@ half4 main(float2 xy) {
         		color;
 }
 `)!;
-
-const { width, height } = CANVAS;
-const boundingRect = rect(0, 0, width, height);
 
 interface AdjustmentsProps {
   children?: ReactNode | ReactNode[];

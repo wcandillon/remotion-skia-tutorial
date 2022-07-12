@@ -1,24 +1,14 @@
-import {
-  Group,
-  Fill,
-  ColorMatrix,
-  Mask,
-  Paint,
-  usePaintRef,
-} from "@shopify/react-native-skia";
+import { Group, Fill, ColorMatrix, Mask } from "@shopify/react-native-skia";
 import type { ReactNode } from "react";
 import { useCurrentFrame } from "remotion";
 
-import { RemotionCanvas, useLoop } from "../components";
-import { CANVAS } from "../components/Theme";
+import { RemotionCanvas } from "../components";
 
 import { Tile } from "./Tile";
 import { PhosphorDot, TILE } from "./PhosphorDot";
 import { Reference } from "./Reference";
 import { Refresh } from "./Refresh";
 import { Adjustments } from "./Adjustments";
-
-const { width, height } = CANVAS;
 
 interface CRTProps {
   children: ReactNode | ReactNode[];

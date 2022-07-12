@@ -7,14 +7,12 @@ import {
   Skia,
   Text,
   vec,
-  Image,
 } from "@shopify/react-native-skia";
 import { interpolate } from "remotion";
 
 import { useTypefaces } from "../components";
 import { CANVAS } from "../components/Theme";
 import { useLoop } from "../components/animations/useLoop";
-import { useImages } from "../components/RemotionCanvas";
 
 const { height, width } = CANVAS;
 const fontSize = 800;

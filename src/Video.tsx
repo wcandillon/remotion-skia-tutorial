@@ -1,6 +1,6 @@
 import { Composition } from "remotion";
 
-import { CRT } from "./CRT";
+import { Bug, durationInFrames } from "./Bug";
 import { CANVAS } from "./components/Theme";
 
 const { width, height } = CANVAS;
@@ -10,8 +10,8 @@ export const RemotionVideo = () => {
     <>
       <Composition
         id="Main"
-        component={CRT}
-        durationInFrames={500}
+        component={Bug}
+        durationInFrames={durationInFrames}
         fps={30}
         width={width}
         height={height}

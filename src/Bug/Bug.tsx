@@ -4,7 +4,7 @@ import { Internals } from "remotion";
 export const durationInFrames = 30;
 
 const colors = ["cyan", "magenta", "yellow"];
-const color = colors[Math.floor(Math.random() * colors.length)];
+const color = colors[Math.floor(Math.random() * colors.length) % colors.length];
 
 export const Bug = () => {
   const contexts = Internals.useRemotionContexts();

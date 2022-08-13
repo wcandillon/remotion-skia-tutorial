@@ -225,91 +225,91 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.2.0.tgz#7d6d789ae8edf73dc9bed1246cd48277edea8066"
   integrity sha512-o6aam+0Ug1xGK3ABYmBm0B1YuEKfM/5kaoZO0eHbZwSpw9UzDX4G5y4Nx/K20FHqUmJHkZmLvOUFYwN4N+HqKA==
 
-"@remotion/bundler@4.0.0-skia.23+f34fa8255":
-  version "4.0.0-skia.23"
-  resolved "https://registry.yarnpkg.com/@remotion/bundler/-/bundler-4.0.0-skia.23.tgz#f5d1de268d6dabe3c17cebc3cc110e0f97566502"
-  integrity sha512-HNayUA13uh8JuiB4UxGCZO+n2PiZp/yK1Gt9dELe1jV8WhBGACWDrN/7868B3IR33mjW0wxwVcOI0qWtRgwXXA==
+"@remotion/bundler@3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@remotion/bundler/-/bundler-3.2.3.tgz#f0ed5cd4d5e18164c3275da74d11f44b9a978a8a"
+  integrity sha512-Vd7viNKB2WheCKQxjoN0f4+FG5tFywZYyeiXsD0DPhRaK2AdSWMYjRWDfjMKIsdNlWZlvRkyEs3IpW+TpWawWw==
   dependencies:
     css-loader "5.2.7"
     esbuild "0.14.19"
     react-refresh "0.9.0"
-    remotion "4.0.0-skia.23+f34fa8255"
+    remotion "3.2.3"
     style-loader "2.0.0"
     webpack "5.72.0"
 
-"@remotion/cli@4.0.0-skia.23+f34fa825":
-  version "4.0.0-skia.23"
-  resolved "https://registry.yarnpkg.com/@remotion/cli/-/cli-4.0.0-skia.23.tgz#c49ad1d98c1670067e71a13356fc6d9f1e428cc2"
-  integrity sha512-uscIcGujH2CE7j6iRObaUjyU292KdVSbTb4NPlEpM55Bg/sVxRycywUy+oaq0zblN++cEJ3wvCSzQiYU7MsxQg==
+"@remotion/cli@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@remotion/cli/-/cli-3.2.3.tgz#2aefb026fcfac87338f73ee25ef8d823df6b6ae9"
+  integrity sha512-NoMNIB1n0NTBf/dBO/1HGGPfPqy2Mz90/Cf2zDUz6cy1WvRrFLmKn/lXIVzaXdMdB2hgsgGq+i7HTy1bNjXZtQ==
   dependencies:
-    "@remotion/bundler" "4.0.0-skia.23+f34fa8255"
-    "@remotion/media-utils" "4.0.0-skia.23+f34fa8255"
-    "@remotion/player" "4.0.0-skia.23+f34fa8255"
-    "@remotion/renderer" "4.0.0-skia.23+f34fa8255"
+    "@remotion/bundler" "3.2.3"
+    "@remotion/media-utils" "3.2.3"
+    "@remotion/player" "3.2.3"
+    "@remotion/renderer" "3.2.3"
     better-opn "2.1.1"
     dotenv "9.0.2"
     memfs "3.4.3"
     minimist "1.2.6"
-    remotion "4.0.0-skia.23+f34fa8255"
+    remotion "3.2.3"
     semver "7.3.5"
     source-map "0.6.1"
 
-"@remotion/eslint-config@4.0.0-skia.23+f34fa825":
-  version "4.0.0-skia.23"
-  resolved "https://registry.yarnpkg.com/@remotion/eslint-config/-/eslint-config-4.0.0-skia.23.tgz#3cffe8ab9f562a9f613b7896cf656c0a3e00a3a8"
-  integrity sha512-oHcc7yqS78XJODEf7AIwWYLx1TZLURZ8fP4eKPK5zThJ/yALq6+cHaufl+Ye9+STtrEXmTPzRpxqYtb9aEZidw==
+"@remotion/eslint-config@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@remotion/eslint-config/-/eslint-config-3.2.3.tgz#5bd2c5c556decfc507073509716ba86f941d9a5e"
+  integrity sha512-Bh1oa5w3u6FbE4k2wV0Qgm09aP1DHhFgEAly5g5i0Jh2CeeRJC3EuQ5vsASOtI5dssv39B1zzx7jgWXN7UbJFw==
   dependencies:
-    "@remotion/eslint-plugin" "4.0.0-skia.23+f34fa8255"
+    "@remotion/eslint-plugin" "3.2.3"
     "@typescript-eslint/eslint-plugin" "5.19.0"
     "@typescript-eslint/parser" "5.19.0"
     eslint-plugin-10x "1.5.2"
     eslint-plugin-react "7.29.4"
     eslint-plugin-react-hooks "4.4.0"
 
-"@remotion/eslint-plugin@4.0.0-skia.23+f34fa8255":
-  version "4.0.0-skia.23"
-  resolved "https://registry.yarnpkg.com/@remotion/eslint-plugin/-/eslint-plugin-4.0.0-skia.23.tgz#6f91e103879f9c054794258ccbb37a2d01fba570"
-  integrity sha512-2vX9J3I4YvlAJEM4InYrChbtppez3uF+H7hs3QSp6LSn/GEH6Xm6t2viIRrJBwjw2MP8JJZ0NWQhZKqomzT9Bw==
+"@remotion/eslint-plugin@3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@remotion/eslint-plugin/-/eslint-plugin-3.2.3.tgz#9f2e8c58001023dad91f0e2dc2a6e4ac5403e420"
+  integrity sha512-kAiltWmYlL5I8Rg0sWElSyNVdmb52QvqsTXADGPXt91Lsl90vNm2oeQJ0wM1umoU7JLY8ORHOW1IUq1ah/fefA==
   dependencies:
     "@typescript-eslint/utils" "5.19.0"
 
-"@remotion/media-utils@4.0.0-skia.23+f34fa8255":
-  version "4.0.0-skia.23"
-  resolved "https://registry.yarnpkg.com/@remotion/media-utils/-/media-utils-4.0.0-skia.23.tgz#e2d7b5689ab05ce2d1f72e8496b25e177d3142d2"
-  integrity sha512-Ws8tf+JlQHCuTlZNGy6p1ZrN1yUHujkblhqn78teV2sstBmDndgdwBA25irJ7bdrrlL6IjQcKWP2EJAy/p8IFg==
+"@remotion/media-utils@3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@remotion/media-utils/-/media-utils-3.2.3.tgz#cdb4ef42d3fe0c796d19d08f0ff6709c57ca7e57"
+  integrity sha512-oMNK3pJtK0i1BwtMwt5Fw08bq5flv/9syyvIrIPD/Ker5VYqLI0bFGWLmTCGZJAbz7LTMSIK1iZqOAGH7JgGsQ==
   dependencies:
-    remotion "4.0.0-skia.23+f34fa8255"
+    remotion "3.2.3"
 
-"@remotion/player@4.0.0-skia.23+f34fa8255":
-  version "4.0.0-skia.23"
-  resolved "https://registry.yarnpkg.com/@remotion/player/-/player-4.0.0-skia.23.tgz#3de4c4c71e0640febecbebd243a15ddf248bcda3"
-  integrity sha512-zoPfEJPzezrFrNwkYJEYOU9llHqKk6DRpJp8I4uQffXNGCyGJHQCU+SYZBFCyjw5mHdsPbo2+xwgmXDfV/1iMA==
+"@remotion/player@3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@remotion/player/-/player-3.2.3.tgz#5b979a1c1fed1d6eb5d3a143b605553c976d21b4"
+  integrity sha512-Js8g2PJ/k9Z80p1Az1E8Scf4b0DOMCk/mCG9VMOZI9sKqszq118exfixl/+xVsYE18sU3LJZLf49UnGFmoNOXw==
   dependencies:
-    remotion "4.0.0-skia.23+f34fa8255"
+    remotion "3.2.3"
 
-"@remotion/renderer@4.0.0-skia.23+f34fa8255":
-  version "4.0.0-skia.23"
-  resolved "https://registry.yarnpkg.com/@remotion/renderer/-/renderer-4.0.0-skia.23.tgz#544a2a74701754f3ed7283b98991e36f951cb8c9"
-  integrity sha512-UEmhcBX71O0gypknG9oZH6CJ95POfjBVLE+p9+YbU5wORbpyqUTvfdun4wUBMaXvh1TBWqZGdtTARSPOE546kA==
+"@remotion/renderer@3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@remotion/renderer/-/renderer-3.2.3.tgz#ca8f8e699007e60f5c149eda373e0ea65a07aeca"
+  integrity sha512-CUQ3626sYnU+zQiwpgX7WcYTJkLatZ2osCqFhTBKIGq8pzeS0CwTl0QEXqatjGR98BFf8NvSUftaI51KSEq5Ig==
   dependencies:
     execa "5.1.1"
     extract-zip "2.0.1"
-    remotion "4.0.0-skia.23+f34fa8255"
+    remotion "3.2.3"
     source-map "^0.8.0-beta.0"
     ws "8.7.0"
 
-"@remotion/skia@4.0.0-skia.23+f34fa825":
-  version "4.0.0-skia.23"
-  resolved "https://registry.yarnpkg.com/@remotion/skia/-/skia-4.0.0-skia.23.tgz#2a0d50c4b80ec7874d5e546cc13c4cdbd0fa8c76"
-  integrity sha512-vSaS8BR9neZ5xkzSX0SOGvk8rTsNzxsUjp1Os7tzYt7KvfcCy/XBLwp+JQwlYQnUU3r6RRGuxRXpigdA8uDQ7w==
+"@remotion/skia@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@remotion/skia/-/skia-3.2.3.tgz#c0182cc8e9aabef383a78ada99fbe6f31aca57d9"
+  integrity sha512-CuJI/shxmQmXF9XvrqBWBR4SKX8WL7VjqsnSgVjKF6yG5sWFnL6VwIoLlQAljCkGAs2bDCMS7/2ZttsOp7pbUQ==
   dependencies:
     copy-webpack-plugin "11"
-    remotion "4.0.0-skia.23+f34fa8255"
+    remotion "3.2.3"
 
-"@shopify/react-native-skia@^0.1.136":
-  version "0.1.136"
-  resolved "https://registry.yarnpkg.com/@shopify/react-native-skia/-/react-native-skia-0.1.136.tgz#cb399cd1216dfc14ad3cca226e6d0450b1e7ab7c"
-  integrity sha512-gNsBw9/ISNL7tAHdfhjeW3Y9/FPN93mPx4XSJS7xwbEgYaJdBP+1T1MyCCZZZTTcqJ6bCVp9FFUR6yo0u93Pgg==
+"@shopify/react-native-skia@^0.1.140":
+  version "0.1.140"
+  resolved "https://registry.yarnpkg.com/@shopify/react-native-skia/-/react-native-skia-0.1.140.tgz#2465b4eb2ac237fedbca1caa43772291973a01d9"
+  integrity sha512-ijXxv4yrccOOBWapCsu/DEIjF6iU77MuQzjzGA5aWLydQF/dvRNARbFMnIkpWHs6uBJNnZEjwNWVbH+HmbmrAw==
   dependencies:
     canvaskit-wasm "^0.35.0"
     react-reconciler "^0.26.2"
@@ -2688,10 +2688,10 @@ regexpp@^3.1.0, regexpp@^3.2.0:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.2.0.tgz#0425a2768d8f23bad70ca4b90461fa2f1213e1b2"
   integrity sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==
 
-remotion@4.0.0-skia.23+f34fa825, remotion@4.0.0-skia.23+f34fa8255:
-  version "4.0.0-skia.23"
-  resolved "https://registry.yarnpkg.com/remotion/-/remotion-4.0.0-skia.23.tgz#98e40d980ae333567f6b42c6b2f3360ab06e0f50"
-  integrity sha512-YbwSXqMlquJUYUA8sf+93kpdXrA7oKw23EIkZIlprdIf2pzFqgtrTGBlr744zd2Gvkl+gCbTJA7vaoTn7C4tAw==
+remotion@3.2.3, remotion@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/remotion/-/remotion-3.2.3.tgz#17ea1a58c82defcdbccb0aab20064d9e428da721"
+  integrity sha512-fyAhsaXnP/FmeWnB4n0nUgguoD3l/QjKA4Zm3wZlFdOmeduvEViFLf6Y3mm7/Cv55hvKHKfDlSU77m7wD3VCmw==
 
 require-from-string@^2.0.2:
   version "2.0.2"

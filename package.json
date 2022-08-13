@@ -12,17 +12,17 @@
   "repository": {},
   "license": "UNLICENSED",
   "dependencies": {
-    "@remotion/cli": "4.0.0-skia.23+f34fa825",
-    "@remotion/eslint-config": "4.0.0-skia.23+f34fa825",
-    "@remotion/skia": "4.0.0-skia.23+f34fa825",
-    "@shopify/react-native-skia": "^0.1.136",
+    "@remotion/cli": "^3.2.3",
+    "@remotion/eslint-config": "^3.2.3",
+    "@remotion/skia": "^3.2.3",
+    "@shopify/react-native-skia": "^0.1.140",
     "@types/react-native": "^0.69.2",
     "eslint": "7",
     "prettier": "^2.2.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-native-web": "^0.18.4",
-    "remotion": "4.0.0-skia.23+f34fa825",
+    "remotion": "^3.2.3",
     "typescript": "^4.6.3"
   },
   "devDependencies": {
